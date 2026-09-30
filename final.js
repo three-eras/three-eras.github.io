@@ -152,7 +152,7 @@
   document.head.appendChild(css);
 
   const naya = document.createElement('script');
-  naya.src = 'naya-updates.js?v=20260929-entry-polish';
+  naya.src = 'naya-updates.js?v=20260929-libel-pages';
   naya.defer = true;
   naya.dataset.exhibitProductionLayer = 'naya-content';
   naya.onload = function(){
@@ -161,7 +161,7 @@
     museum.defer = true;
     museum.dataset.exhibitProductionLayer = 'museum-ux';
     const locales = document.createElement('script');
-    locales.src = 'gallery-locales.js?v=20260929-public-clean';
+    locales.src = 'gallery-locales.js?v=20260929-libel-pages';
     const startMuseum = () => document.head.appendChild(museum);
     locales.onload = startMuseum;
     locales.onerror = startMuseum;

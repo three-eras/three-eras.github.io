@@ -128,3 +128,13 @@ html body.gallery-design #main-content .era-card .era-image-wrap img.era-image {
   object-fit:contain!important;
   object-position:center!important;
 }
+
+/* Focused libel reading pages and unnumbered gallery navigation. */
+html body.gallery-design .era-structure-number,html body.gallery-design #museum-wayfinder {display:none!important}
+html body.gallery-design .libel-page-heading {width:min(850px,calc(100% - 48px));margin:150px auto 48px}
+html body.gallery-design .libel-page-heading h1 {font:400 clamp(2.6rem,6vw,5rem)/1.1 'Libre Caslon Display',Georgia,serif;color:#f1eee8;margin:28px 0}
+html body.gallery-design .libel-essay {width:min(850px,calc(100% - 48px));margin:0 auto 100px}
+html body.gallery-design .libel-essay p {font-family:var(--gallery-prose,Georgia,serif);font-size:clamp(1.2rem,2vw,1.5rem);line-height:1.7;margin:0 0 2em}
+@media(max-width:600px){html body.gallery-design .libel-page-heading {margin-top:175px}}
+
+html body.gallery-design :is(.libel-page-heading,.libel-essay) {width:min(760px,calc(100% - 48px));padding:0!important}

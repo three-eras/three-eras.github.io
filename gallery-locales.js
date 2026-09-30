@@ -923,7 +923,7 @@ function apply() {
   history.replaceState(null,'',current.href);
   document.querySelectorAll('a[href]').forEach(link=>{
     const target=new URL(link.getAttribute('href'),location.href);
-    if (target.origin!==location.origin || !/\/(index|exhibition|antijudaism|antisemitism)\.html$/.test(target.pathname)) return;
+    if (target.origin!==location.origin || !/\/(index|exhibition|antijudaism|antisemitism|colonialism|apartheid|genocide)\.html$/.test(target.pathname)) return;
     target.searchParams.set('lang',lang);
     link.href=target.href;
   });

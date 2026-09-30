@@ -274,7 +274,7 @@
     intro.id = 'antizionist-era';
     intro.lang = 'en';
     intro.dir = 'ltr';
-    intro.innerHTML = '<h2>The Antizionist Era</h2>' + paragraphs(sourceCopy.framework) + '<h3>The Three Core Libels</h3>' + paragraphs(sourceCopy.libelIntro) + '<nav class="naya-section-links" aria-label="Explore the three libels"><a href="#colonialism">Colonialism</a><a href="#apartheid">Apartheid and racism</a><a href="#genocide">Genocide</a><a href="#exhibition-archive">The archive</a></nav>';
+    intro.innerHTML = '<h2>The Antizionist Era</h2>' + paragraphs(sourceCopy.framework) + '<h3>The Three Core Libels</h3>' + paragraphs(sourceCopy.libelIntro) + '<nav class="naya-section-links" aria-label="Explore the three libels"><a href="colonialism.html">Colonialism</a><a href="apartheid.html">Apartheid and racism</a><a href="genocide.html">Genocide</a><a href="#exhibition-archive">The archive</a></nav>';
     libels.before(intro);
     const grid = libels.querySelector('.era-libels-grid');
     grid.innerHTML = sourceCopy.libels.map((essay,i)=>'<article class="era-libel-card" id="'+essay.id+'" lang="en" dir="ltr"><span aria-hidden="true" class="era-structure-number">0'+(i+1)+'</span><h3>'+esc(essay.title)+'</h3>'+paragraphs(essay.paragraphs).replace('<p class="" data-en="Settler-colonialism removes', '<h4>Settler-Colonialism and Settlers</h4><p class="" data-en="Settler-colonialism removes')+'</article>').join('');
@@ -285,6 +285,7 @@
     archive.dir = 'ltr';
     archive.innerHTML = '<h2>The Archive</h2>' + p(sourceCopy.archive[0],'naya-lede') + '<details class="naya-archive-guide"><summary>How to read the archive</summary>'+ sourceCopy.archive.slice(1).map(text=>{const [label,...rest]=text.split('\u000b');return '<h3>'+esc(label)+'</h3> '+p(rest.join(' '));}).join('') + '</details><div class="naya-archive-grid">' + archiveObjects.map((o,i)=>'<article class="naya-archive-card"><img loading="lazy" decoding="async" src="'+esc(o.img)+'" alt="'+esc(o.title)+'"><div class="naya-object-meta"><span>Object '+String(i+1).padStart(2,'0')+'</span><span>'+esc(o.meta)+'</span></div><h3>'+esc(o.title)+'</h3>'+paragraphs(o.paragraphs)+'</article>').join('')+'</div>';
     libels.after(archive);
+    libels.remove();
   }
 
   function run() {
