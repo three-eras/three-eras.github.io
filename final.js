@@ -157,11 +157,11 @@
   naya.dataset.exhibitProductionLayer = 'naya-content';
   naya.onload = function(){
     const museum = document.createElement('script');
-    museum.src = 'museum-upgrades.js?v=20260929-public-clean';
+    museum.src = 'museum-upgrades.js?v=20260929-public-final';
     museum.defer = true;
     museum.dataset.exhibitProductionLayer = 'museum-ux';
     const locales = document.createElement('script');
-    locales.src = 'gallery-locales.js?v=20260929-libel-pages';
+    locales.src = 'gallery-locales.js?v=20260929-public-final';
     const startMuseum = () => document.head.appendChild(museum);
     locales.onload = startMuseum;
     locales.onerror = startMuseum;

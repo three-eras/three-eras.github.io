@@ -104,54 +104,54 @@
 
   const catalogue = {
     '“But He Does Not Listen to the UN…”': {
-      creator:'Fyodor Fedorovich Nelyubin, with V. N. Suslov. Soviet poster artists; additional creator biography remains to be completed in the working catalogue.',
+      creator:'',
       setting:'Soviet anti-Israel propaganda from the late Brezhnev period. The UN reprimand places Israel inside the moral language of international institutions and human rights.',
-      archive:'Design dated 1978; a separate archival/auction record identifies a 1980 proof. Holding institution, permanent catalogue record, and rights credit remain to be supplied in the current working document.'
+      archive:''
     },
     '“Sew on this little piece too!”': {
-      creator:'N. Lisogorsky. Biographical context remains to be completed in the working catalogue.',
+      creator:'',
       setting:'Soviet anti-Zionist caricature presenting territorial expansion as a US-enabled project of constructing “Greater Israel.”',
-      archive:'Exact publication, date, holding institution, permanent source, and rights credit are explicitly still to be verified.'
+      archive:''
     },
     '“The Israeli Extremists’ Appetite”': {
-      creator:'Published in Sovetskaya Moldavia; individual artist attribution is not supplied in the current working document.',
+      creator:'',
       setting:'Soviet visual propaganda portraying Israeli territorial ambition as an insatiable appetite consuming surrounding Arab lands.',
-      archive:'June 4 publication record; year, holding institution, permanent source, and rights credit remain to be verified.'
+      archive:''
     },
     '“The Expansionists”': {
-      creator:'Published in Krokodil, No. 20 (1973); individual artist attribution is not supplied in the current working document.',
+      creator:'',
       setting:'A Soviet satirical image representing Israeli military figures as architects of a territorial “Greater Israel.”',
-      archive:'Krokodil, No. 20, 1973. Holding institution, catalogue/accession record, permanent source, and rights credit remain to be added.'
+      archive:''
     },
     'May Day anti-Zionist display, Moscow': {
-      creator:'Photograph generally identified with Vladimir Sychov; final creator credit should follow the permanent archival record selected for publication.',
+      creator:'',
       setting:'May Day demonstration, Moscow, 1972. The display visualizes “Zionism” as a monstrous transnational force and reuses older conspiracy imagery.',
-      archive:'Current working text identifies the photograph and scholarly discussion but does not yet supply a holding collection/accession number or final rights credit.'
+      archive:''
     },
     'Zionist Colonialism in Palestine': {
       creator:'Fayez A. Sayegh, Palestinian intellectual and diplomat; published by the PLO Research Center.',
       setting:'Beirut, September 1965, during the global era of decolonization. The pamphlet became a pivotal text in the colonial framing of Zionism.',
-      archive:'Palestine Monographs No. 1, PLO Research Center, Beirut. A permanent holding-library record and rights/credit line remain to be attached to the exhibit object.'
+      archive:''
     },
     'Beware: Zionism!': {
       creator:'Yuri Ivanov; published through the Soviet Communist Party political publishing apparatus.',
       setting:'Moscow, 1969, in the post-1967 Soviet anti-Zionist campaign. The book gave propaganda claims the format of political analysis.',
-      archive:'Moscow, 1969 edition. The current working document does not yet specify the displayed copy’s holding institution, catalogue number, or rights credit.'
+      archive:''
     },
     '“Israel: A Colonial-Settler State?”': {
       creator:'Maxime Rodinson, French Marxist scholar.',
       setting:'1967 essay that interpreted Zionism through the history of European colonial expansion.',
-      archive:'Publication is identified in the working document; the specific displayed scan’s permanent bibliographic/holding record and rights credit remain to be attached.'
+      archive:''
     },
     '“Israeli Plan”': {
       creator:'Yuri Andreevich Cherepanov.',
       setting:'1979 Soviet cartoon presenting settlements, fortifications, and displacement as instruments of a colonial advance.',
-      archive:'1979 object. Holding institution, collection/catalogue number, permanent source, and rights credit remain to be added.'
+      archive:''
     },
     'Zionism = Racism': {
       creator:'Zh. (Joseph) Efimovsky; published by the Leningrad propaganda collective Combat Pencil (Боевой карандаш).',
       setting:'1976, one year after UN General Assembly Resolution 3379. The poster translates the “Zionism is racism” formula into an image of racial domination.',
-      archive:'Combat Pencil, Leningrad, 1976. Holding institution, permanent catalogue/accession record, and rights credit remain to be attached to the displayed copy.'
+      archive:''
     }
   };
 
@@ -161,9 +161,9 @@
       const title = card.querySelector('h3')?.textContent?.trim();
       if (!title) return;
       const record = catalogue[title] || {
-        creator:'Creator information remains to be completed from the approved working catalogue.',
-        setting:'Historical-setting note remains to be completed from the approved working catalogue.',
-        archive:'Holding institution, permanent source, and rights/credit information remain to be verified.'
+        creator:'',
+        setting:'',
+        archive:''
       };
       const objectText = card.querySelector('p:not(.naya-verification)')?.textContent?.trim() || 'See object caption above.';
       const box = document.createElement('div');
