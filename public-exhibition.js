@@ -7,12 +7,13 @@ const tx = value => lang==='en' ? value : (COPY.translations[value] ? COPY.trans
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const text = value => esc(tx(value));
 const p = value => `<p>${text(value)}</p>`;
-const nav = () => `<header class="site-header"><a class="brand" href="index.html"><img src="stop-antizionism-logo.webp" alt="Stop Antizionism"></a><nav class="era-nav"><a href="antijudaism.html">${text('Antijudaism')}</a><a href="antisemitism.html">${text('Antisemitism')}</a><a href="exhibition.html">${text('Antizionism')}</a></nav><div class="site-controls"><button class="audio-toggle" type="button">${text('AUDIO: OFF')}</button><div class="lang-controls"><button type="button" data-lang="en">EN</button><button type="button" data-lang="he">עברית</button><button type="button" data-lang="ru">Русский</button></div></div></header>`;
-const hero = data => `<section class="era-hero ${data.image ? 'has-image' : 'no-image'}">${data.image ? `<img src="${esc(data.image)}" alt="">` : ''}<div class="era-hero-shade"></div><div class="era-hero-title"><h1>${text(data.title)}</h1></div></section>`;
+const nav = () => `<header class="site-header"><a class="brand text-brand" href="index.html" aria-label="Stop Antizionism"><span class="brand-stop">STOP</span><span class="brand-anti">ANTIZIONISM</span></a><nav class="era-nav"><a href="antijudaism.html">${text('Antijudaism')}</a><a href="antisemitism.html">${text('Antisemitism')}</a><a href="exhibition.html">${text('Antizionism')}</a></nav><div class="site-controls"><button class="audio-toggle" type="button">${text('AUDIO: OFF')}</button><div class="lang-controls"><button type="button" data-lang="en">EN</button><button type="button" data-lang="he">עברית</button><button type="button" data-lang="ru">Русский</button></div></div></header>`;
+const hero = data => `<section class="era-hero ${data.image ? 'has-image' : 'no-image'}"><div class="era-stage"><div class="era-room"><div class="era-back-wall"></div><div class="era-left-wall"></div><div class="era-right-wall"></div><div class="era-floor"></div></div><div class="era-hero-title"><h1>${text(data.title)}</h1></div>${data.image ? `<figure class="era-frame"><div class="era-frame-inner"><img src="${esc(data.image)}" alt="" decoding="async"></div></figure>` : ''}</div></section>`;
 const gallery = items => `<div class="artifact-grid">${items.map(([date,img]) => `<figure class="artifact"><div class="artifact-frame"><img src="${esc(img)}" alt="" loading="lazy" decoding="async"></div><figcaption>${typeof date==='number' ? date : text(date)}</figcaption></figure>`).join('')}</div>`;
+const homePills = () => `<section class="home-era-pills"><div class="home-pill-grid"><a class="home-pill" href="antijudaism.html"><span class="pill-img"><img src="${esc(COPY.era.antijudaism.image)}" alt="" loading="lazy" decoding="async"></span><span>${text(COPY.era.antijudaism.title)}</span></a><a class="home-pill" href="antisemitism.html"><span class="pill-img"><img src="${esc(COPY.era.antisemitism.image)}" alt="" loading="lazy" decoding="async"></span><span>${text(COPY.era.antisemitism.title)}</span></a><a class="home-pill" href="exhibition.html"><span class="pill-img"><img src="${esc(COPY.era.antizionism.image)}" alt="" loading="lazy" decoding="async"></span><span>${text(COPY.era.antizionism.title)}</span></a></div></section>`;
 function home(){
   const h=COPY.home;
-  return `${nav()}<main class="home-main"><section class="home-video" hidden><video autoplay muted loop playsinline preload="metadata" src="homepage-video.mp4"></video></section><section class="home-hero"><div class="home-hero-copy"><div class="kicker">${text(h.kicker)}</div><h1>${text(h.title)}</h1><p class="hero-line">${text(h.hero)}</p></div></section><section class="home-body"><div class="prose">${h.body.map(p).join('')}<div class="home-actions"><a class="cta" href="mailto:${esc(h.email)}">${text(h.cta)}</a><a class="email" href="mailto:${esc(h.email)}">${esc(h.email)}</a></div></div></section></main>`;
+  return `${nav()}<main class="home-main"><section class="home-video" hidden><video autoplay muted loop playsinline preload="metadata" src="homepage-video.mp4"></video></section><section class="home-hero immersive-home"><div class="home-gallery-room"><div class="room-ceiling"></div><div class="room-back"></div><div class="room-left"></div><div class="room-right"></div><div class="room-floor"></div><a class="walk-frame walk-frame-a" href="antijudaism.html"><img src="${esc(COPY.era.antijudaism.image)}" alt="" decoding="async"><span>${text(COPY.era.antijudaism.title)}</span></a><a class="walk-frame walk-frame-b" href="antisemitism.html"><img src="${esc(COPY.era.antisemitism.image)}" alt="" decoding="async"><span>${text(COPY.era.antisemitism.title)}</span></a><a class="walk-frame walk-frame-c" href="exhibition.html"><img src="${esc(COPY.era.antizionism.image)}" alt="" decoding="async"><span>${text(COPY.era.antizionism.title)}</span></a></div><div class="home-hero-copy"><div class="kicker">${text(h.kicker)}</div><h1>${text(h.title)}</h1><p class="hero-line">${text(h.hero)}</p></div></section><section class="home-body"><div class="prose">${h.body.map(p).join('')}<div class="home-actions"><a class="cta" href="mailto:${esc(h.email)}">${text(h.cta)}</a><a class="email" href="mailto:${esc(h.email)}">${esc(h.email)}</a></div></div></section>${homePills()}</main>`;
 }
 function simpleEra(key){
   const d=COPY.era[key];
@@ -34,8 +35,32 @@ function render(){
   document.querySelectorAll('[data-lang]').forEach(btn=>{btn.classList.toggle('active',btn.dataset.lang===lang);btn.addEventListener('click',()=>{lang=btn.dataset.lang;localStorage.setItem('exhibit-lang',lang);render();});});
   installAudio();
   installHomeVideo();
+  installDepth();
   reveal();
 }
+
+function installDepth(){
+  const root=document.documentElement;
+  let raf=0;
+  const updateScroll=()=>{
+    const max=Math.max(1,window.innerHeight*1.25);
+    const walk=Math.min(1,Math.max(0,window.scrollY/max));
+    root.style.setProperty('--walk',walk.toFixed(4));
+  };
+  const updatePointer=e=>{
+    if(raf) cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(()=>{
+      const x=(e.clientX/window.innerWidth-.5).toFixed(4);
+      const y=(e.clientY/window.innerHeight-.5).toFixed(4);
+      root.style.setProperty('--mx',x);
+      root.style.setProperty('--my',y);
+    });
+  };
+  updateScroll();
+  window.addEventListener('scroll',updateScroll,{passive:true});
+  window.addEventListener('pointermove',updatePointer,{passive:true});
+}
+
 function installHomeVideo(){
   const video=document.querySelector('.home-video video');
   if(!video) return;
@@ -54,7 +79,7 @@ function installAudio(){
   sync();
 }
 function reveal(){
-  const nodes=[...document.querySelectorAll('.artifact,.stream-grid p,.timeline-entry,.libel-copy p,.prose p')];
+  const nodes=[...document.querySelectorAll('.artifact,.stream-grid p,.timeline-entry,.libel-copy p,.prose p,.home-pill,.walk-frame,.era-frame')];
   if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){nodes.forEach(n=>n.classList.add('visible'));return;}
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -8% 0px'});
   nodes.forEach(n=>io.observe(n));
