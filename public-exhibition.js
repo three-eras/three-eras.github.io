@@ -81,7 +81,7 @@ function installAudio(){
 function reveal(){
   const nodes=[...document.querySelectorAll('.artifact,.stream-grid p,.timeline-entry,.libel-copy p,.prose p,.home-pill,.walk-frame,.era-frame')];
   if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){nodes.forEach(n=>n.classList.add('visible'));return;}
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -8% 0px'});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:0,rootMargin:'0px 0px 12% 0px'});
   nodes.forEach(n=>io.observe(n));
 }
 render();

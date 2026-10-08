@@ -29,13 +29,19 @@
       if(map[key]) section.id = map[key];
     });
   }
+  let hashDone = false;
+  function scrollToHash(){
+    if(hashDone || !location.hash) return;
+    const t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if(t){ hashDone = true; setTimeout(() => t.scrollIntoView({block:'start'}), 60); }
+  }
   function forceVisible(){
     document.querySelectorAll('.home-pill,.walk-frame,.era-frame').forEach(n => n.classList.add('visible'));
   }
   function apply(){
     if(applying) return;
     applying = true;
-    requestAnimationFrame(() => { fixHomeNav(); fixVideo(); fixLibelIds(); forceVisible(); applying = false; });
+    requestAnimationFrame(() => { fixHomeNav(); fixVideo(); fixLibelIds(); scrollToHash(); forceVisible(); applying = false; });
   }
   apply();
   setTimeout(apply, 150);
