@@ -1,5 +1,5 @@
 (() => {
-  const sources = document.body.dataset.page === 'home' ? ['homepage-video.mp4'] : [];
+  const sources = document.body.dataset.page === 'home' ? ['homepage-video.mp4'] : document.body.dataset.page === 'antizionism' ? ['antizionism-film.mp4'] : [];
   let applying = false;
   function fixHomeNav(){
     if(document.body.dataset.page === 'home') document.querySelectorAll('.era-nav').forEach(n => n.remove());
