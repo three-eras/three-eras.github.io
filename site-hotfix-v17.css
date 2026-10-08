@@ -46,3 +46,7 @@ body[data-page="home"] .site-header{grid-template-columns:auto 1fr!important}
 .site-controls{grid-column:auto!important;border-top:0!important;padding-top:0!important;margin-top:0!important}
 }
 .audio-toggle,.lang-controls button{white-space:nowrap!important}
+.libel-links{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.6rem}
+.libel-links a{display:inline-flex;align-items:center;min-height:52px;padding:.9rem 1.5rem;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.035);color:#f5f0e8;text-decoration:none;font:400 clamp(1.25rem,1.6vw,1.6rem)/1 var(--serif);transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease}
+.libel-links a:hover,.libel-links a:focus-visible{transform:translateY(-2px);border-color:rgba(232,218,190,.66);background:rgba(232,218,190,.09);box-shadow:0 18px 46px rgba(0,0,0,.46),0 0 24px rgba(232,218,190,.12);outline:none}
+@media(max-width:760px){.libel-links{flex-direction:column}.libel-links a{justify-content:center}}
