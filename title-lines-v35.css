@@ -2,7 +2,7 @@
 .exhibition-title-line {
   background-image:linear-gradient(currentColor,currentColor);
   background-repeat:no-repeat;
-  background-position:50% 100%;
+  background-position:50% calc(100% - .08em);
   background-size:0% 1px;
   -webkit-box-decoration-break:clone;
   box-decoration-break:clone;
