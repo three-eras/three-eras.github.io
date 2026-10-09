@@ -7,13 +7,13 @@ const tx = value => lang==='en' ? value : (COPY.translations[value] ? COPY.trans
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const text = value => esc(tx(value));
 const p = value => `<p>${text(value)}</p>`;
-const nav = () => `<header class="site-header"><a class="brand text-brand" href="index.html" aria-label="Stop Antizionism"><span class="brand-stop">STOP</span><span class="brand-anti">ANTIZIONISM</span></a><nav class="era-nav"><a href="antijudaism.html">${text('Antijudaism')}</a><a href="antisemitism.html">${text('Antisemitism')}</a><a href="exhibition.html">${text('Antizionism')}</a></nav><div class="site-controls"><button class="audio-toggle" type="button">${text('AUDIO: OFF')}</button><div class="lang-controls"><button type="button" data-lang="en">EN</button><button type="button" data-lang="he">עברית</button><button type="button" data-lang="ru">Русский</button></div></div></header>`;
+const nav = () => `<header class="site-header"><nav class="era-nav"><a href="antijudaism.html">${text('Antijudaism')}</a><a href="antisemitism.html">${text('Antisemitism')}</a><a href="exhibition.html">${text('Antizionism')}</a></nav><div class="site-controls"><button class="audio-toggle" type="button">${text('AUDIO: OFF')}</button><div class="lang-controls"><button type="button" data-lang="en">EN</button><button type="button" data-lang="he">עברית</button><button type="button" data-lang="ru">Русский</button></div></div></header>`;
 const hero = data => `<section class="era-hero ${data.image ? 'has-image' : 'no-image'}"><div class="era-stage"><div class="era-room"><div class="era-back-wall"></div><div class="era-left-wall"></div><div class="era-right-wall"></div><div class="era-floor"></div></div><div class="era-hero-title"><h1>${text(data.title)}</h1></div>${data.image ? `<figure class="era-frame"><div class="era-frame-inner"><img src="${esc(data.image)}" alt="" decoding="async"></div></figure>` : ''}</div></section>`;
 const gallery = items => `<div class="artifact-grid">${items.map(([date,img]) => `<figure class="artifact"><div class="artifact-frame"><img src="${esc(img)}" alt="" loading="lazy" decoding="async"></div><figcaption>${typeof date==='number' ? date : text(date)}</figcaption></figure>`).join('')}</div>`;
 const homePills = () => `<section class="home-era-pills"><div class="home-pill-grid"><a class="home-pill" href="antijudaism.html"><span class="pill-img"><img src="${esc(COPY.era.antijudaism.image)}" alt="" loading="lazy" decoding="async"></span><span>${text(COPY.era.antijudaism.title)}</span></a><a class="home-pill" href="antisemitism.html"><span class="pill-img"><img src="${esc(COPY.era.antisemitism.image)}" alt="" loading="lazy" decoding="async"></span><span>${text(COPY.era.antisemitism.title)}</span></a><a class="home-pill" href="exhibition.html"><span class="pill-img"><img src="${esc(COPY.era.antizionism.image)}" alt="" loading="lazy" decoding="async"></span><span>${text(COPY.era.antizionism.title)}</span></a></div></section>`;
 function home(){
   const h=COPY.home;
-  return `${nav()}<main class="home-main"><section class="home-video" hidden><video autoplay muted loop playsinline preload="metadata" src="homepage-video.mp4"></video></section><section class="home-hero immersive-home"><div class="home-gallery-room"><div class="room-ceiling"></div><div class="room-back"></div><div class="room-left"></div><div class="room-right"></div><div class="room-floor"></div><a class="walk-frame walk-frame-a" href="antijudaism.html"><img src="${esc(COPY.era.antijudaism.image)}" alt="" decoding="async"><span>${text(COPY.era.antijudaism.title)}</span></a><a class="walk-frame walk-frame-b" href="antisemitism.html"><img src="${esc(COPY.era.antisemitism.image)}" alt="" decoding="async"><span>${text(COPY.era.antisemitism.title)}</span></a><a class="walk-frame walk-frame-c" href="exhibition.html"><img src="${esc(COPY.era.antizionism.image)}" alt="" decoding="async"><span>${text(COPY.era.antizionism.title)}</span></a></div><div class="home-hero-copy"><div class="kicker">${text(h.kicker)}</div><h1>${text(h.title)}</h1><p class="hero-line">${text(h.hero)}</p></div></section><section class="home-body"><div class="prose">${h.body.map(p).join('')}<div class="home-actions"><a class="cta" href="mailto:${esc(h.email)}">${text(h.cta)}</a><a class="email" href="mailto:${esc(h.email)}">${esc(h.email)}</a></div></div></section>${homePills()}</main>`;
+  return `${nav()}<main class="home-main"><section class="home-video" hidden><video autoplay muted loop playsinline preload="metadata" src="homepage-video.mp4"></video></section><section class="home-hero immersive-home"><div class="home-gallery-room"><div class="room-ceiling"></div><div class="room-back"></div><div class="room-left"></div><div class="room-right"></div><div class="room-floor"></div><a class="walk-frame walk-frame-a" href="antijudaism.html"><img src="${esc(COPY.era.antijudaism.image)}" alt="" decoding="async"><span>${text(COPY.era.antijudaism.title)}</span></a><a class="walk-frame walk-frame-b" href="antisemitism.html"><img src="${esc(COPY.era.antisemitism.image)}" alt="" decoding="async"><span>${text(COPY.era.antisemitism.title)}</span></a><a class="walk-frame walk-frame-c" href="exhibition.html"><img src="${esc(COPY.era.antizionism.image)}" alt="" decoding="async"><span>${text(COPY.era.antizionism.title)}</span></a></div><div class="home-hero-copy"><div class="kicker">${text(h.kicker)}</div><h1>${text(h.title)}</h1><p class="hero-line">${text(h.hero)}</p></div></section><section class="home-body"><div class="prose">${h.body.map(p).join('')}<div class="home-actions"><a class="cta" href="mailto:${esc(h.email)}">${text(h.cta)}</a></div></div></section>${homePills()}</main>`;
 }
 function simpleEra(key){
   const d=COPY.era[key];
@@ -26,7 +26,7 @@ function libelSection(item,key){
 function antizionism(){
   const d=COPY.era.antizionism;
   const l=COPY.libels.items;
-  return `${nav()}<main>${hero(d)}<section class="home-video era-film" hidden><video autoplay muted loop playsinline preload="metadata" src="antizionism-film.mp4"></video></section><section class="era-intro"><div class="prose">${d.paragraphs.map(p).join('')}</div>${gallery(COPY.placements.intro)}</section><section class="streams"><div class="section-inner"><h2>${text(COPY.streams.title)}</h2><p class="section-lead">${text(COPY.streams.lead)}</p><div class="stream-grid">${COPY.streams.items.map(x=>`<p>${text(x)}</p>`).join('')}</div></div></section><section class="libel-intro"><div class="section-inner"><h2>${text(COPY.libels.title)}</h2><p class="section-lead">${text(COPY.libels.intro)}</p><nav class="libel-links"><a href="colonialism.html">${text(l[0].title)}</a><a href="apartheid.html">${lang==='en'?'Apartheid':text(l[1].title)}</a><a href="genocide.html">${text(l[2].title)}</a></nav></div></section><section class="genealogy"><div class="section-inner"><h2>${text(COPY.genealogy.title)}</h2><div class="genealogy-intro">${COPY.genealogy.intro.map(p).join('')}</div><div class="timeline">${COPY.genealogy.events.map(e=>`<article class="timeline-entry"><h3>${text(e.title)}</h3>${e.paragraphs.map(p).join('')}</article>`).join('')}</div></div></section></main>`;
+  return `${nav()}<main><section class="home-video era-film" hidden><video autoplay muted loop playsinline preload="metadata" src="antizionism-film.mp4"></video></section>${hero({...d,image:null})}<section class="era-intro"><div class="prose">${p(d.paragraphs[0])}<figure class="era-inline-art"><div class="era-frame-inner"><img src="${esc(d.image)}" alt="" decoding="async" loading="eager"></div></figure>${d.paragraphs.slice(1).map(p).join('')}</div>${gallery(COPY.placements.intro)}</section><section class="streams"><div class="section-inner"><h2>${text(COPY.streams.title)}</h2><p class="section-lead">${text(COPY.streams.lead)}</p><div class="stream-grid">${COPY.streams.items.map(x=>`<p>${text(x)}</p>`).join('')}</div></div></section><section class="libel-intro"><div class="section-inner"><h2>${text(COPY.libels.title)}</h2><p class="section-lead">${text(COPY.libels.intro)}</p><nav class="libel-links"><a href="colonialism.html">${text(l[0].title)}</a><a href="apartheid.html">${lang==='en'?'Apartheid':text(l[1].title)}</a><a href="genocide.html">${text(l[2].title)}</a></nav></div></section><section class="genealogy"><div class="section-inner"><h2>${text(COPY.genealogy.title)}</h2><div class="genealogy-intro">${COPY.genealogy.intro.map(p).join('')}</div><div class="timeline">${COPY.genealogy.events.map(e=>`<article class="timeline-entry"><h3>${text(e.title)}</h3>${e.paragraphs.map(p).join('')}</article>`).join('')}</div></div></section></main>`;
 }
 function render(){
   document.documentElement.lang=lang;
@@ -65,6 +65,20 @@ function installHomeVideo(){
   const video=document.querySelector('.home-video video');
   if(!video) return;
   const section=video.closest('.home-video');
+  const control=document.createElement('button');
+  control.className='film-toggle';
+  control.type='button';
+  control.innerHTML='<span class="film-icon" aria-hidden="true"></span>';
+  const syncFilm=()=>{
+    control.dataset.state=video.paused?'paused':'playing';
+    const labels={en:['Play film','Pause film'],he:['הפעל סרטון','השהה סרטון'],ru:['Воспроизвести видео','Приостановить видео']};
+    const label=labels[lang][video.paused?0:1];
+    control.setAttribute('aria-label',label);control.title=label;
+  };
+  control.addEventListener('click',()=>{if(video.paused)video.play().catch(()=>{});else video.pause();syncFilm();});
+  video.addEventListener('play',syncFilm);
+  video.addEventListener('pause',syncFilm);
+  section.append(control);syncFilm();
   const revealVideo=()=>{if(section)section.hidden=false;video.play().catch(()=>{});};
   if(video.readyState>=2) revealVideo();
   else video.addEventListener('loadeddata',revealVideo,{once:true});
@@ -74,7 +88,7 @@ function installAudio(){
   const btn=document.querySelector('.audio-toggle');
   if(!btn) return;
   if(!audio){audio=new Audio('lacrymosa-piano.mp3');audio.loop=true;audio.preload='metadata';}
-  const sync=()=>{btn.textContent=text(audio.paused?'AUDIO: OFF':'AUDIO: ON');};
+  const sync=()=>{btn.innerHTML='<span class="sound-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span>';btn.setAttribute('aria-label',tx(audio.paused?'AUDIO: OFF':'AUDIO: ON'));btn.setAttribute('aria-pressed',String(!audio.paused));btn.title=tx(audio.paused?'AUDIO: OFF':'AUDIO: ON');};
   btn.addEventListener('click',async()=>{try{if(audio.paused) await audio.play(); else audio.pause();}catch(e){} sync();});
   sync();
 }
@@ -86,3 +100,4 @@ function reveal(){
 }
 render();
 })();
+
