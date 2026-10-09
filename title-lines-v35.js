@@ -1,5 +1,5 @@
 (() => {
-  const targets='main h1,main h2,main h3,main h4,main h5,main h6,.kicker,.hero-line,.home-pill > span:not(.pill-img),.era-next-label > span:not(.era-next-arrow),.libel-links a,.room-pill';
+  const targets='main h1,main h2';
   function apply(){
     document.querySelectorAll(targets).forEach(title=>{
       if(!title.textContent.trim() || title.querySelector(':scope > .exhibition-title-line')) return;
