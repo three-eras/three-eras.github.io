@@ -231,3 +231,8 @@ body :is(.era-frame-inner,.artifact-frame,.museum-frame,.pill-img) img {
   body :is(a,button,h1,h2,h3,.era-next-arrow) { transition:none!important; }
   body :is(.audio-toggle,.lang-controls button,.controls-nav button,.controls-nav a,.cta,.room-pill,.statement-link,.libel-links a,.home-pill,.era-next-link):is(:hover,:focus-visible) { transform:none!important; }
 }
+
+/* Homepage introduction shares the same prose rhythm as the full paragraphs. */
+body[data-page="home"] .home-hero { padding-bottom:0!important; }
+body[data-page="home"] .home-body { padding-top:1.4rem!important; }
+body[data-page="home"] .home-body .prose > p { margin:0 0 1.3rem!important; }
