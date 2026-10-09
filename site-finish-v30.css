@@ -13,7 +13,7 @@ html,body { background:#000!important; }
   background:#000!important;
   border:0!important;
 }
-.era-nav { grid-column:1!important;grid-row:1!important;justify-content:flex-start!important;margin:0!important;gap:1rem!important; }
+.era-nav { display:none!important; }
 .site-header .site-controls,[dir="rtl"] .site-header .site-controls {
   grid-column:2!important;grid-row:1!important;justify-self:end!important;
   margin:0!important;padding:0!important;border:0!important;gap:2px!important;
