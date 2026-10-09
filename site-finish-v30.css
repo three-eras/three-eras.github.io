@@ -177,3 +177,44 @@ body.gallery-design .libel-essay p:last-child { margin-bottom:0!important; }
   .home-hero,.home-body,.era-intro,.streams,.libel-intro,.genealogy { padding-inline:1rem!important; }
 }
 @media(prefers-reduced-motion:reduce) { .home-pill,.film-toggle { transition:none!important; } }
+
+/* Gentle motion belongs to the display layer; the archival files stay intact. */
+.era-bottom-nav { width:min(calc(100% - 2.4rem),var(--finish-column));margin:1rem auto 2.5rem;display:flex;justify-content:center; }
+.era-next-link { display:inline-flex;align-items:center;gap:1rem;min-height:48px;padding:.8rem 1.2rem;border:1px solid rgba(245,240,232,.3);border-radius:999px;text-decoration:none;font:400 clamp(1.5rem,2.5vw,2rem)/1.15 var(--serif); }
+.era-next-link.home-pill { width:min(100%,360px);padding:0;gap:0; }
+.era-next-link.home-pill .era-next-label { display:flex!important;align-items:center;justify-content:center;gap:.75rem; }
+.era-next-link.home-pill .pill-img { height:250px!important; }
+.era-next-arrow { transition:transform .35s ease; }
+[dir="rtl"] .era-next-arrow { transform:rotate(180deg); }
+.home-hero-copy { pointer-events:auto!important; }
+body :is(h1,h2,h3) { transition:color .4s ease,text-shadow .4s ease!important; }
+body :is(h1,h2,h3):hover { color:#fff!important;text-shadow:0 0 22px rgba(255,255,255,.24)!important; }
+body :is(a,button) { transition:transform .35s ease,color .35s ease,border-color .35s ease,background-color .35s ease,box-shadow .35s ease,text-shadow .35s ease!important; }
+body :is(a,button):is(:hover,:focus-visible) { color:#fff!important;border-color:rgba(245,240,232,.7)!important;box-shadow:0 0 24px rgba(245,240,232,.13)!important;text-shadow:0 0 14px rgba(255,255,255,.25)!important; }
+body .site-controls :is(a,button):is(:hover,:focus-visible) { color:#fff!important;box-shadow:0 0 24px rgba(245,240,232,.13)!important;text-shadow:0 0 14px rgba(255,255,255,.25)!important; }
+body :is(.audio-toggle,.lang-controls button,.controls-nav button,.controls-nav a,.cta,.room-pill,.statement-link,.libel-links a,.home-pill,.era-next-link):is(:hover,:focus-visible) { transform:translateY(-2px)!important;background-color:rgba(245,240,232,.07)!important; }
+body :is(a,button):focus-visible { outline:2px solid #eee!important;outline-offset:4px!important; }
+.era-next-link:hover .era-next-arrow { transform:translateX(4px); }
+[dir="rtl"] .era-next-link:hover .era-next-arrow { transform:rotate(180deg) translateX(4px); }
+body :is(.era-frame-inner,.artifact-frame,.museum-frame,.home-pill .pill-img) {
+  position:relative;transform-origin:center;overflow:visible!important;
+  animation:archival-display-drift 18s ease-in-out infinite alternate!important;
+  transition:filter .7s ease,box-shadow .7s ease!important;
+}
+body :is(.era-frame-inner,.artifact-frame,.museum-frame,.home-pill .pill-img):hover,
+body .home-pill:focus-visible .pill-img {
+  animation-play-state:paused!important;filter:brightness(1.045)!important;
+  box-shadow:0 0 35px rgba(245,240,232,.12)!important;
+}
+body :is(.era-frame-inner,.artifact-frame,.museum-frame,.pill-img) img {
+  transform:none!important;filter:none!important;animation:none!important;
+}
+@keyframes archival-display-drift { from { transform:scale(1); } to { transform:scale(1.018); } }
+@media(hover:hover) and (pointer:fine) {
+  body .home-pill:hover .pill-img { animation-play-state:paused!important;filter:brightness(1.045)!important; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body :is(.era-frame-inner,.artifact-frame,.museum-frame,.home-pill .pill-img) { animation:none!important;transform:none!important; }
+  body :is(a,button,h1,h2,h3,.era-next-arrow) { transition:none!important; }
+  body :is(.audio-toggle,.lang-controls button,.controls-nav button,.controls-nav a,.cta,.room-pill,.statement-link,.libel-links a,.home-pill,.era-next-link):is(:hover,:focus-visible) { transform:none!important; }
+}

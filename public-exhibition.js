@@ -17,7 +17,9 @@ function home(){
 }
 function simpleEra(key){
   const d=COPY.era[key];
-  return `${nav()}<main>${hero(d)}<section class="era-intro"><div class="prose">${d.paragraphs.map(p).join('')}</div></section></main>`;
+  const nextKey=key==='antijudaism'?'antisemitism':'antizionism';
+  const nextHref=key==='antijudaism'?'antisemitism.html':'exhibition.html';
+  return `${nav()}<main>${hero(d)}<section class="era-intro"><div class="prose">${d.paragraphs.map(p).join('')}</div></section><nav class="era-bottom-nav" aria-label="${lang==='he'?'ניווט בין התקופות':lang==='ru'?'Навигация по эпохам':'Era navigation'}"><a class="home-pill era-next-link" href="${nextHref}"><span class="pill-img"><img src="${esc(COPY.era[nextKey].image)}" alt="" loading="lazy" decoding="async"></span><span class="era-next-label"><span>${text(COPY.era[nextKey].title)}</span><span class="era-next-arrow" aria-hidden="true">→</span></span></a></nav></main>`;
 }
 function libelSection(item,key){
   const imgs=COPY.placements[key] || [];
