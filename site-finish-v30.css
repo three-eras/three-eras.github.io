@@ -236,3 +236,11 @@ body :is(.era-frame-inner,.artifact-frame,.museum-frame,.pill-img) img {
 body[data-page="home"] .home-hero { padding-bottom:0!important; }
 body[data-page="home"] .home-body { padding-top:1.4rem!important; }
 body[data-page="home"] .home-body .prose > p { margin:0 0 1.3rem!important; }
+
+/* Matching exhibition support pills. */
+body[data-page="home"] .home-support { margin-top:2rem; }
+body[data-page="home"] .home-actions { justify-content:center;gap:.85rem;margin-top:1.35rem; }
+body[data-page="home"] .home-actions .cta { justify-content:center;min-height:52px;padding:.85rem 1.35rem;border:1px solid rgba(245,240,232,.4);border-radius:999px;background:transparent;color:#f5f0e8;font:400 clamp(1.2rem,1.8vw,1.5rem)/1.2 var(--serif);text-transform:none;letter-spacing:0;box-sizing:border-box; }
+body[data-page="home"] .home-actions .cta:not(:disabled):is(:hover,:focus-visible) { border-color:#f5f0e8; }
+body[data-page="home"] .home-actions .cta:focus-visible { outline:2px solid #f5f0e8;outline-offset:4px; }
+@media(max-width:600px) { body[data-page="home"] .home-actions { flex-direction:column;align-items:stretch; } }
