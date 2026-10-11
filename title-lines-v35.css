@@ -7,7 +7,7 @@
   -webkit-box-decoration-break:clone;
   box-decoration-break:clone;
   padding-bottom:.07em;
-  transition:background-size 1.2s ease-in-out;
+  transition:background-size 1.8s ease-in-out;
 }
 @media(hover:hover) {
   [data-title-line]:hover > .exhibition-title-line,
@@ -21,3 +21,5 @@ summary:focus-visible .exhibition-title-line,
 @media(prefers-reduced-motion:reduce) {
   .exhibition-title-line { transition:none; }
 }
+
+body[data-page="home"] .home-hero h1 { padding-bottom:.2em!important; }

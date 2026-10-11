@@ -244,3 +244,5 @@ body[data-page="home"] .home-actions .cta { justify-content:center;min-height:52
 body[data-page="home"] .home-actions .cta:not(:disabled):is(:hover,:focus-visible) { border-color:#f5f0e8; }
 body[data-page="home"] .home-actions .cta:focus-visible { outline:2px solid #f5f0e8;outline-offset:4px; }
 @media(max-width:600px) { body[data-page="home"] .home-actions { flex-direction:column;align-items:stretch; } }
+
+body[data-page="home"] .home-era-pills { border-bottom-color:rgba(245,240,232,.22); }
