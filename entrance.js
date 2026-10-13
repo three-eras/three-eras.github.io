@@ -1,18 +1,10 @@
 (() => {
-  const banner = document.querySelector('.entrance-banner');
-  const button = banner?.querySelector('.banner-toggle');
-  if (!banner || !button) return;
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const sync = () => {
-    const paused = banner.classList.contains('is-paused') || reduced.matches;
-    button.setAttribute('aria-label', paused ? 'Play image banner' : 'Pause image banner');
-    button.setAttribute('aria-pressed', String(paused));
-    button.hidden = reduced.matches;
-  };
-  button.addEventListener('click', () => {
-    banner.classList.toggle('is-paused');
-    sync();
-  });
-  reduced.addEventListener('change', sync);
+  const video=document.getElementById('entrance-video');
+  const button=document.querySelector('.film-toggle');
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sync=()=>{button.setAttribute('aria-label',video.paused?'Play video':'Pause video');button.setAttribute('aria-pressed',String(video.paused));};
+  video.addEventListener('play',sync);video.addEventListener('pause',sync);
+  button.addEventListener('click',()=>{if(video.paused) video.play().catch(sync);else video.pause();});
+  if(reduced){video.autoplay=false;video.pause();}else video.play().catch(sync);
   sync();
 })();

@@ -37,21 +37,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ivory);outline-offs
 
 .enter-gallery:disabled{color:var(--ivory);background:transparent;opacity:1;cursor:default}
 
-.entrance-banner{--banner-height:clamp(200px,30vw,360px);--banner-gap:10px;position:relative;width:100%;margin:0 auto}
-.banner-window{width:100%;overflow:hidden}
-.banner-track{display:flex;width:max-content;animation:conveyor-right 70s linear infinite;will-change:transform}
-.banner-group{display:flex;flex:none;gap:var(--banner-gap);padding-right:var(--banner-gap)}
-.banner-frame{flex:none;width:calc(var(--banner-height) * .8);height:var(--banner-height);margin:0;overflow:hidden;background:#080808}
-.banner-frame img{display:block;width:100%;height:100%;object-fit:cover}
-.banner-toggle{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;border:0;background:transparent;cursor:pointer}
-.banner-toggle:focus-visible{outline:2px solid var(--ivory);outline-offset:5px}
-.entrance-banner.is-paused .banner-track{animation-play-state:paused}
-@keyframes conveyor-right{from{transform:translate3d(-50%,0,0)}to{transform:translate3d(0,0,0)}}
-@media(max-width:640px){.entrance-banner{--banner-height:clamp(200px,52vw,260px);--banner-gap:8px}}
-@media(prefers-reduced-motion:reduce){.banner-window{overflow-x:auto}.banner-track{animation:none;transform:none;will-change:auto}.banner-group[aria-hidden="true"]{display:none}.banner-toggle{display:none}}
-
 /* Two bottom entrance actions */
 .entrance-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;margin-top:1.6rem}
 .entrance-actions .enter-gallery{flex:1 1 320px;max-width:520px;margin-top:0}
 @media(max-width:640px){.entrance-actions{margin-top:.75rem}}
-
