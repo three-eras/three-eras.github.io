@@ -36,3 +36,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ivory);outline-offs
 .entrance-film .pause-icon{display:none}
 
 .enter-gallery:disabled{color:var(--ivory);background:transparent;opacity:1;cursor:default}
+
+/* Two bottom entrance actions */
+.entrance-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;margin-top:1.6rem}
+.entrance-actions .enter-gallery{flex:1 1 320px;max-width:520px;margin-top:0}
+@media(max-width:640px){.entrance-actions{margin-top:.75rem}}
