@@ -107,6 +107,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ivory);outline-offs
 </style>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://stopaz.org/#organization", "name": "Stop Antizionism", "url": "https://stopaz.org/", "email": "info@stopaz.org"}, {"@type": "WebPage", "@id": "https://exhibition.stopaz.org/#webpage", "url": "https://exhibition.stopaz.org/", "name": "The Third Era of Jew-Hatred", "description": "Discover The Third Era, a groundbreaking exhibition on the history of antizionism and Jew-hatred. Digital exhibition coming soon. Support the 2027 physical exhibition.", "inLanguage": "en", "publisher": {"@id": "https://stopaz.org/#organization"}, "about": {"@type": "CreativeWork", "name": "The Third Era: Antizionism and the History of Jew-Hatred", "contributor": {"@type": "Person", "name": "Dr. Naya Lekht"}}}]}</script>
+<style>
+.music-toggle{position:fixed;right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));z-index:1000;min-height:44px;padding:.65rem 1rem;border:1px solid rgba(245,240,232,.65);border-radius:999px;background:#111;color:var(--ivory);font:400 1rem/1.2 var(--body);cursor:pointer;box-shadow:0 2px 16px #0008}
+.music-toggle:hover{background:#222;border-color:var(--ivory)}
+.entrance-main{padding-bottom:6rem}
+</style>
 </head><body>
 <header class="entrance-header">
 <a class="entrance-logo" href="https://stopaz.org/" aria-label="Stop Antizionism"><img src="entrance-media-v2/stopaz-logo.webp" alt="Stop Antizionism" width="2048" height="292"></a>
@@ -159,6 +164,24 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ivory);outline-offs
 </div>
 <footer class="entrance-footer">© 2026 Stop Antizionism. Contact: <a href="mailto:info@stopaz.org">info@stopaz.org</a></footer>
 </main>
-<script>(()=>{const c=document.querySelector('.cinema'),a=document.getElementById('cinema-audio');a.volume=.5;const play=()=>a.play().catch(()=>{});document.addEventListener('pointerdown',play,{passive:true});document.addEventListener('keydown',play);c.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const r=c.getBoundingClientRect();c.style.setProperty('--pan-x',((e.clientX-r.left)/r.width-.5)*16+'px');c.style.setProperty('--pan-y',((e.clientY-r.top)/r.height-.5)*10+'px')});c.addEventListener('pointerleave',()=>{c.style.setProperty('--pan-x','0px');c.style.setProperty('--pan-y','0px')});play()})()</script>
+<button class="music-toggle" id="music-toggle" type="button" aria-controls="cinema-audio">Play music</button>
+<script>(()=>{const c=document.querySelector('.cinema'),a=document.getElementById('cinema-audio');a.volume=.5;
+const button=document.getElementById('music-toggle');
+let userPaused=false;
+const sync=()=>{button.textContent=a.paused?'Play music':'Pause music'};
+const play=()=>a.play().catch(sync);
+const unlock=e=>{if(userPaused||button.contains(e.target))return;play()};
+const stopUnlock=()=>{document.removeEventListener('pointerdown',unlock);document.removeEventListener('keydown',unlock)};
+button.addEventListener('click',()=>{
+  stopUnlock();
+  if(a.paused){userPaused=false;play()}else{userPaused=true;a.pause()}
+  sync();
+});
+a.addEventListener('play',()=>{stopUnlock();sync()});
+a.addEventListener('pause',sync);
+document.addEventListener('pointerdown',unlock,{passive:true});
+document.addEventListener('keydown',unlock);
+sync();
+c.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const r=c.getBoundingClientRect();c.style.setProperty('--pan-x',((e.clientX-r.left)/r.width-.5)*16+'px');c.style.setProperty('--pan-y',((e.clientY-r.top)/r.height-.5)*10+'px')});c.addEventListener('pointerleave',()=>{c.style.setProperty('--pan-x','0px');c.style.setProperty('--pan-y','0px')});play()})()</script>
 </body></html>
 
